@@ -19,6 +19,8 @@ export const generateRefreshToken = (payload: object, res: Response) => {
     const refreshToken = jwt.sign(payload, `${REFRESH_TOKEN_SECRET}`, {expiresIn: '30d'})
 
     res.cookie('refreshToken', refreshToken, {
+        sameSite: 'none',
+        secure: true,
         httpOnly: true,
         path: '/api/auth/refresh_token',
         maxAge: 30*24*60*60*1000 // 30days
