@@ -15,8 +15,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors({
-    origin: '*',
-    methods: "*",
+    origin: `${process.env.BASE_URL}`,
+    preflightContinue: true,
     credentials: true
 }))
 app.use(morgan('dev'))
