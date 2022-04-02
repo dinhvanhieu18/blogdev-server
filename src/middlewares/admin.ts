@@ -1,7 +1,6 @@
-import {IDecodedToken, IReqAuth} from "../utils/interface";
+import {IReqAuth} from "../utils/interface";
 import {NextFunction, Response} from "express";
-import jwt from "jsonwebtoken";
-import Users from "../models/userModel";
+import {Admin} from "../utils/const";
 
 const isAdmin = async (req: IReqAuth, res: Response, next: NextFunction) => {
     try {
@@ -9,7 +8,7 @@ const isAdmin = async (req: IReqAuth, res: Response, next: NextFunction) => {
             return res.status(400).json({msg: "Invalid Authentication."})
         }
 
-        if (req.user.role !== 'admin') {
+        if (req.user.role !== Admin) {
             return res.status(400).json({msg: "You don't have permission."})
         }
 
