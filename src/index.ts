@@ -15,7 +15,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors({
-    origin: [`${process.env.BASE_URL}`],
+    origin: [`${process.env.BASE_URL}`, 'https://apis.google.com'],
     credentials: true
 }))
 app.use(morgan('dev'))
