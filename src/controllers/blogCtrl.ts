@@ -109,7 +109,7 @@ const blogCtrl = {
 
     getAll: async (req: Request, res: Response) => {
         try {
-            const blogs = await Blogs.find()
+            const blogs = await Blogs.find().sort('title')
 
             return res.json(blogs)
         } catch (err: any) {
